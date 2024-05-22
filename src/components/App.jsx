@@ -1,8 +1,22 @@
+
 import "../styles/App.scss";
-import initialData from "../services/data.json"
+import { useState, useEffect } from "react";
+import {getCharacteres} from '../services/Characteres.service'
+import CardList from "./CardList";
+
 
 function App() {
-  return <>Template</>;
+// Creo mi VE donde voy a guardar los datos de mi api//
+
+  const[characteres, setCharacters] = useState ([]);
+
+  
+  useEffect(() => {
+    getCharacteres().then(data=>{setCharacters(data);})
+  }, [])
+  return (<CardList characteres={characteres}/>)
+  
 }
+
 
 export default App;

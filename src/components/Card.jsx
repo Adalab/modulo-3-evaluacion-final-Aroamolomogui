@@ -1,9 +1,13 @@
 
 
-function card() {
+function Card({character}) {
   return (
-    <div>card</div>
+    <article>
+        <img src= {character.image} alt="" />
+        <h3>{character.name}</h3>
+        <p>{character.species}</p>
+    </article>
   )
 }
 
-export default card
+export default Card
