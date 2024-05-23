@@ -7,12 +7,12 @@ import FilterByName from "./FilterByName";
 
 
 function App() {
-// Creo mi VE donde voy a guardar los datos de mi api//
+// Creo mi VE donde voy a guardar los datos de mi api y el contenedor es un array//
   const[characteres, setCharacters] = useState ([]);
-//ve donde recogo los datos que escribe el usuario en la búsqueda del input//
+//ve donde recojo los datos que escribe el usuario en la búsqueda del input//
   const[name, setName] = useState ("")
 
-  
+  //Bloque de código que react me da para que se ejecute una sola vez, vuelvo a usar el then que me devuelve una promesa que es el objeto modificado//
   useEffect(() => {
     getCharacteres().then(data=>{setCharacters(data);})
   }, [])
@@ -28,10 +28,21 @@ function App() {
   }
   
   */
+//filtro para que me devuelva el name que introduce el usuario//
+
+ const filterData = characteres.filter((item) => {
+  
+  if (name.length === 0) {
+    return item //si name VE donde escribe el usuario está vació incluye a todos los personajes//
+  } else {
+    return item.name.toLowerCase().includes(name.toLowerCase()); //Cuando el usuario introduzca un valor en el input filtramelo//
+  }
+
+})
   return (
   <>
-   <FilterByName setName={setName} name={name}/>
-  <CardList characteres={characteres}/> 
+   <FilterByName setName={setName} name={name} />
+  <CardList characteres={filterData} /> 
   
  
   </>

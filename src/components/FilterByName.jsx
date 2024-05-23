@@ -1,5 +1,5 @@
 
-function FilterByName({setName,name}) {
+function FilterByName({setName,name,filterData}) {
  
 
 //cre0 mi función que cambia la VE cuando el usuario mete un valor new//
