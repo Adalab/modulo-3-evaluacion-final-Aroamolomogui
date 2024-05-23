@@ -1,9 +1,9 @@
 
 import Card from "./Card";
 
-function CardList({characteres}) {
+function CardList  ({characteres}) {
   return (
-    <ul>
+    <ul className="cardList">
       {characteres?.map((character) => <li key={character.id}> < Card character={character}/> </li>)}  
     </ul>
 

@@ -3,6 +3,7 @@ import "../styles/App.scss";
 import { useState, useEffect } from "react";
 import {getCharacteres} from '../services/Characteres.service'
 import CardList from "./CardList";
+import FilterByName from "./FilterByName";
 
 
 function App() {
@@ -10,11 +11,22 @@ function App() {
 
   const[characteres, setCharacters] = useState ([]);
 
+  const[nameFilter, setNameFilter] = useState ("")
+
   
   useEffect(() => {
     getCharacteres().then(data=>{setCharacters(data);})
   }, [])
-  return (<CardList characteres={characteres}/>)
+
+  return (
+  <>
+   <FilterByName setNameFilter={setNameFilter}/>
+  <CardList characteres={characteres}/> 
+  
+ 
+  </>
+  )  
+
   
 }
 
