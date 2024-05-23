@@ -11,16 +11,27 @@ function App() {
 
   const[characteres, setCharacters] = useState ([]);
 
-  const[nameFilter, setNameFilter] = useState ("")
+  const[name, setName] = useState ("")
 
   
   useEffect(() => {
     getCharacteres().then(data=>{setCharacters(data);})
   }, [])
+/* operador ternario: si nameFilter es un valor verdadero entonces alguien ha escrito un name, entonces devuélveme a todos los que sean igual que genderFilter y si no retorna true*/
 
+  // .filter((item)=> nameFilter ? nameFilter === item.name : true )
+
+  /* si el nameFilter es diferente a "" quiere decir que ya se ha escrito un name
+  if(nameFilter !== ""){ entonces retorna el item cuyo name sea igual al escrito
+    return item.name === nameFilter 
+  } else { y si no devuelve a todos
+    retur true
+  }
+  
+  */
   return (
   <>
-   <FilterByName setNameFilter={setNameFilter}/>
+   <FilterByName setName={setName} name={name}/>
   <CardList characteres={characteres}/> 
   
  

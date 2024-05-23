@@ -1,15 +1,16 @@
 
-function FilterByName({setNameFilter}) {
+function FilterByName({setName,name}) {
 
-  const handleChange = (ev)=>{
-    setNameFilter(ev.target.value)
+  const handleChangeInput = (ev)=>{
+    setName(ev.target.value)
   }
-  return <div>
-    <select name="" id="" onChange={handleChange}>
-      <option value="name">Nombre</option>
-
-    </select>
-  </div>;
+  return <>
+    <form action="">
+      <input type="text" name="name" id="name" onChange={handleChangeInput}/>
+      <input type="submit"  value="Reset" />
+    </form>
+    <p> Hey! Encontraste a {name}</p>
+  </>;
 }
 
 export default FilterByName;
