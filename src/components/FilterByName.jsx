@@ -1,21 +1,28 @@
 
 function FilterByName({setName,name}) {
+ 
 
+//cre0 mi función que cambia la VE cuando el usuario mete un valor new//
   const handleChangeInput = (ev)=>{
-    //cuando cambio cojo lo que es usuario escribe//
+  //evito que al dar intro se refresque la página//
+    ev.preventDefault()
+    //cuando cambia cojo lo que es usuario escribe//
     setName(ev.target.value)
     } 
+    //creo una función para que me devuelva al estado original este input//
     const handleClick = ()=> {
-      //quiero que ese bntn al darle a reset me deje el input name en vacio//
+      //Al darle a reset deja el input name en vacio//
       setName ("")
   }
   return <>
   
-    <form onSubmit={(ev) => {ev.preventDefault() }}>
-      <input type="text" name="name" id="name" onChange={handleChangeInput} value={name}/>
+    <form className="form" >
+      <label className="form__text" htmlFor=""> Holis!! ¿Preparada para encontrar tu person favorito? Búscame:</label>
+      <input className="form__input" onChange={handleChangeInput} type="text" name="" id="" value={name} />
       <input type="submit"  value="Reset" onClick= {handleClick} />
+      {/* <p> Hey! Me encontraste! {name}</p> */}
+
     </form>
-    <p> Hey! Encontraste a {name}</p>
   </>;
 }
 
