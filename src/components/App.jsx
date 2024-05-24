@@ -4,21 +4,25 @@ import { useState, useEffect } from "react";
 import {getCharacteres} from '../services/Characteres.service'
 import CardList from "./CardList";
 import FilterByName from "./FilterByName";
+import FilterBySpecies from "./FilterBySpecies";
 
 
 function App() {
 // Creo mi VE donde voy a guardar los datos de mi api y el contenedor es un array//
-  const[characteres, setCharacters] = useState ([]);
+  const[characteres, setCharacteres] = useState ([]);
 //ve donde recojo los datos que escribe el usuario en la búsqueda del input//
   const[name, setName] = useState ("")
+  //VE donde guardo la specie sellecionada tipo de dato string//
+  const[speciesFilter, setSpeciesFilter] = useState("")
 
   //Bloque de código que react me da para que se ejecute una sola vez, vuelvo a usar el then que me devuelve una promesa que es el objeto modificado//
   useEffect(() => {
-    getCharacteres().then(data=>{setCharacters(data);})
+    getCharacteres().then((newArray) =>{setCharacteres(newArray);})
   }, [])
+
 /* operador ternario: si nameFilter es un valor verdadero entonces alguien ha escrito un name, entonces devuélveme a todos los que sean igual que genderFilter y si no retorna true*/
 
-  const filterDataName = ((item)=> nameFilter ? nameFilter === item.name : true )
+  // const filterDataName = ((item)=> nameFilter ? nameFilter === item.name : true )
 
   /* si el nameFilter es diferente a "" quiere decir que ya se ha escrito un name
   if(nameFilter !== ""){ entonces retorna el item cuyo name sea igual al escrito
@@ -42,7 +46,10 @@ function App() {
   return (
   <>
    <FilterByName setName={setName} name={name} />
-  <CardList characteres={filterData} /> 
+   <FilterBySpecies setSpeciesFilter={setSpeciesFilter}/>
+   <CardList characteres={filterData} /> 
+   
+
   
  
   </>

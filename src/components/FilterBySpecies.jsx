@@ -1,22 +1,19 @@
 
 
-// function FilterBySpecies() {
 
-// }
-// return <>
+function FilterBySpecies({setSpeciesFilter}) {
 
-//   <form onSubmit={(ev)=> {ev.preventDefault()}}>
-//     <div>
-//         <label htmlFor="species">Selecciona la especie</label>
-//         <select name="species" id="species">
-//              <option value="Human">Human</option>
-//              <option value="Alien">Alien</option>
+    const handleChange = (ev) => { 
+        setSpeciesFilter(ev.target.value)
+    }
+  return <div> 
+            <select name="" id="" onChange={handleChange}>
+                 <option value="">Seleccione</option>
+                 <option value="Humanoid">Humano</option>
+                 <option value="Alien">Alien</option>
+            </select>
+    
+          </div>;
+}
 
-//     </select>
-//     </div>
-
-//     </form>
-//     </>;
-// }
-
-// export default FilterBySpecies;
+export default FilterBySpecies;
