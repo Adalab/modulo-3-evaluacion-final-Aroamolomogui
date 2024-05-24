@@ -1,9 +1,8 @@
 
 
-function Details() {
-  return (
-    <div>Details</div>
-  )
+
+function Details({characterDetail}) {
+  return <div>Details</div>;
 }
 
-export default Details
+export default Details;
