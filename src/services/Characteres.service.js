@@ -6,6 +6,7 @@ const getCharacteres = () => {
     .then((data) => {
     const newArray = data.results.map((character)=>{
         return{
+            id:character.id,
             name:character.name,
             image:character.image,
             species:character.species,

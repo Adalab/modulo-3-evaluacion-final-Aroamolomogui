@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     getCharacteres().then((newArray) =>{setCharacteres(newArray);})
   }, [])
-  
+
 //filtro para que me devuelva el name que introduce el usuario//
 
  const filterData = characteres.filter((item) => {
@@ -44,12 +44,14 @@ const {pathname} = useLocation()
 console.log(pathname)
 /*2.Sacar el id de la ruta :id - valida si estoy en la ruta dinámica, si no en el siguiente punto devuelve null*/
 const characterRoute = matchPath("/detail/:id", pathname)
-// console.log(characterRoute)
+console.log(characterRoute)
 //si la ruta coincide obtengo el id enviado por parámetros//
 const characterIdUrl = characterRoute ? characterRoute.params.id : null
 /*3.de mi array de personajes busca el personaje cuyo id sea = al personaje que me has mandado por la Url
 *4.Buscar el personaje que tiene el id seleccionado(find) y enviarlo por props a Detail mi componente*/
-const characterDetail = characteres.find(name=> name.id === characterIdUrl)
+const characterDetail = characteres.find(name=> name.id === parseInt
+(characterIdUrl))
+console.log(characterDetail)
 
   return (
     <>
@@ -62,7 +64,7 @@ const characterDetail = characteres.find(name=> name.id === characterIdUrl)
         <CardList characteres={filterData} /> 
       </>
 } />
-      <Route path="/detail/:id" element={<Details characterDetail={characterDetail}/>}/>
+      <Route path="/detail/:id" element={<Details characterDetail={characterDetail} characteres={characteres}/>}/>
 
     
 
